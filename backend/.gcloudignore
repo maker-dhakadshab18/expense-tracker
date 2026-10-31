@@ -1,0 +1,15 @@
+# Files NOT uploaded to App Engine. env.yaml is deliberately NOT listed: it must be uploaded.
+.gcloudignore
+.git
+.gitignore
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+.env.*
+tests/
+alembic/
+alembic.ini
+requirements-dev.txt
+env.yaml.example

@@ -1,0 +1,13 @@
+runtime: python311
+instance_class: F1
+
+# FastAPI is ASGI: run gunicorn with uvicorn workers, bound to App Engine's $PORT.
+entrypoint: gunicorn -w 2 -k uvicorn_worker.UvicornWorker -b :$PORT --timeout 60 app.main:app
+
+automatic_scaling:
+  min_instances: 0
+  max_instances: 2
+
+# Secrets live in env.yaml (gitignored, but uploaded). See env.yaml.example.
+includes:
+  - env.yaml
