@@ -2,6 +2,16 @@
 
 Paste this whole file into a new Claude chat to continue. Secrets are NOT included here.
 
+## UPDATE 31 Oct ~18:30 IST: MVP IS LIVE
+- Frontend: https://expense-tracker-henna-gamma-48.vercel.app (Vercel, root dir `frontend`, `NEXT_PUBLIC_API_URL` set)
+- API: https://expense-tracker-dhakad.el.r.appspot.com (version 20261031t181250); `/health` returns db ok
+- Migration 0001 applied to prod `neondb`; `alembic check` is clean; 13/13 pytest pass against `expense_test`
+- Live smoke test passed (register, create, summary, delete, CORS preflight from the Vercel origin)
+- Fix applied: `alembic.ini` needs `prepend_sys_path = .`
+- Prod `backend/env.yaml` exists locally (gitignored). CORS uses `CORS_ORIGIN_REGEX` `^https://expense-tracker[a-z0-9-]*\.vercel\.app$`
+- Remaining: manual browser click-through, optional features only.
+The sections below describe the state *before* deployment.
+
 ## Goal and deadline
 MVP personal expense tracker, deployed. **Hard deadline: Sat 31 Oct 2026, 19:00 IST.** ~2 hours left at time of writing.
 - Frontend: Next.js on **Vercel**
